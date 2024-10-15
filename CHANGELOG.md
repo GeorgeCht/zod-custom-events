@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+# [1.1.0](https://github.com/georgecht/zod-custom-events/compare/v1.0.0...v1.1.0) (2024-10-15)
+
+
+### Bug Fixes
+
+* **.releaserc.yml:** mini fix in .releaserc.yml config ([9283687](https://github.com/georgecht/zod-custom-events/commit/92836873136b3e6862d1523b4379d503ae24c54f))
+
 # 1.0.0 (2024-10-15)
 
 
