@@ -1,7 +1,7 @@
-import type { ZodSchema, ZodError } from "zod";
-import type { Middleware, Pipeline } from "./middleware";
+import type { ZodError, ZodSchema } from 'zod'
+import type { Middleware, Pipeline } from './middleware'
 
-import { createPipeline } from "./middleware";
+import { createPipeline } from './middleware'
 
 /**
  * A type-safe extension of the built-in {@link CustomEvent}, with a strongly typed `detail` property.
@@ -11,42 +11,42 @@ import { createPipeline } from "./middleware";
  * [MDN Reference](https://developer.mozilla.org/docs/Web/API/CustomEvent/detail)
  */
 export interface TypedCustomEvent<T> extends CustomEvent<T> {
-  readonly detail: T;
+  readonly detail: T
 }
 
 /**
  * Context object for event payload.
  */
 interface EventPayloadContext<T> {
-  payload: EventPayload<T>;
+  payload: EventPayload<T>
 }
 
 /**
  * Context object for error handling.
  */
 interface ErrorContext {
-  error: ZodError;
+  error: ZodError
 }
 
 /**
  * Inferred type of the event payload based on the Zod schema.
  */
-type EventPayload<T> = T extends ZodSchema<infer U> ? U : never;
+type EventPayload<T> = T extends ZodSchema<infer U> ? U : never
 
 /**
  * Options for initializing {@link EventController} for a single event.
  */
 export interface EventControllerOptions<T extends ZodSchema> {
   /** The element to bind the event to. Defaults to `window`. */
-  element?: HTMLElement | Window;
+  element?: HTMLElement | Window
   /** Error handler for validation errors. */
-  onError?: (ctx: ErrorContext) => void;
+  onError?: (ctx: ErrorContext) => void
   /** Callback function called before dispatching the event. */
-  onDispatch?: (ctx: EventPayloadContext<T>) => void;
+  onDispatch?: (ctx: EventPayloadContext<T>) => void
   /** Callback function called when the event listener is added. */
-  onSubscribe?: () => void;
+  onSubscribe?: () => void
   /** Callback function called when the event listener is removed. */
-  onUnsubscribe?: () => void;
+  onUnsubscribe?: () => void
 }
 
 /**
@@ -55,17 +55,17 @@ export interface EventControllerOptions<T extends ZodSchema> {
  * Supports adding, emitting, and removing the event listener, as well as middleware for event processing.
  */
 export class EventController<T extends ZodSchema> {
-  private element: HTMLElement | Window;
-  private pipeline: Pipeline<EventPayload<T>>;
+  private element: HTMLElement | Window
+  private pipeline: Pipeline<EventPayload<T>>
 
-  private condition?: (payload: EventPayload<T>) => boolean;
-  private conditionCallback?: (ctx: EventPayloadContext<T>) => void;
-  private eventListener?: (event: TypedCustomEvent<EventPayload<T>>) => void;
+  private condition?: (payload: EventPayload<T>) => boolean
+  private conditionCallback?: (ctx: EventPayloadContext<T>) => void
+  private eventListener?: (event: TypedCustomEvent<EventPayload<T>>) => void
 
-  private onError?: (ctx: ErrorContext) => void;
-  private onDispatch?: (ctx: EventPayloadContext<T>) => void;
-  private onSubscribe?: () => void;
-  private onUnsubscribe?: () => void;
+  private onError?: (ctx: ErrorContext) => void
+  private onDispatch?: (ctx: EventPayloadContext<T>) => void
+  private onSubscribe?: () => void
+  private onUnsubscribe?: () => void
 
   /**
    * Creates a new {@link EventController} instance.
@@ -92,14 +92,14 @@ export class EventController<T extends ZodSchema> {
   constructor(
     private schema: T,
     private eventName: string,
-    options: EventControllerOptions<T> = {}
+    options: EventControllerOptions<T> = {},
   ) {
-    this.pipeline = createPipeline();
-    this.element = options.element || window;
-    this.onError = options.onError;
-    this.onDispatch = options.onDispatch;
-    this.onSubscribe = options.onSubscribe;
-    this.onUnsubscribe = options.onUnsubscribe;
+    this.pipeline = createPipeline()
+    this.element = options.element || window
+    this.onError = options.onError
+    this.onDispatch = options.onDispatch
+    this.onSubscribe = options.onSubscribe
+    this.onUnsubscribe = options.onUnsubscribe
   }
 
   /**
@@ -117,14 +117,14 @@ export class EventController<T extends ZodSchema> {
    */
   subscribe(
     listener: (event: TypedCustomEvent<EventPayload<T>>) => void,
-    options?: AddEventListenerOptions
+    options?: AddEventListenerOptions,
   ): void {
     const eventListener = (event: Event) =>
-      listener(event as TypedCustomEvent<EventPayload<T>>);
+      listener(event as TypedCustomEvent<EventPayload<T>>)
 
-    this.onSubscribe?.();
-    this.element.addEventListener(this.eventName, eventListener, options);
-    this.eventListener = eventListener;
+    this.onSubscribe?.()
+    this.element.addEventListener(this.eventName, eventListener, options)
+    this.eventListener = eventListener
   }
 
   /**
@@ -142,11 +142,11 @@ export class EventController<T extends ZodSchema> {
       this.element.removeEventListener(
         this.eventName,
         this.eventListener as EventListenerOrEventListenerObject,
-        options
-      );
+        options,
+      )
 
-      this.onUnsubscribe?.();
-      this.eventListener = undefined;
+      this.onUnsubscribe?.()
+      this.eventListener = undefined
     }
   }
 
@@ -167,39 +167,39 @@ export class EventController<T extends ZodSchema> {
    */
   async dispatch(
     payload: EventPayload<T>,
-    eventInitDict: CustomEventInit<EventPayload<T>> = {}
+    eventInitDict: CustomEventInit<EventPayload<T>> = {},
   ): Promise<void> {
-    const validation = this.schema.safeParse(payload);
+    const validation = this.schema.safeParse(payload)
 
     if (!validation.success) {
       if (this.onError) {
-        this.onError({ error: validation.error });
+        this.onError({ error: validation.error })
       } else {
-        throw new Error(validation.error.message);
+        throw new Error(validation.error.message)
       }
-      return;
+      return
     }
 
     if (this.condition && !this.condition(payload)) {
       if (this.conditionCallback) {
-        this.conditionCallback({ payload });
+        this.conditionCallback({ payload })
       }
-      return;
+      return
     }
 
-    const ctx: EventPayloadContext<T> = { payload };
+    const ctx: EventPayloadContext<T> = { payload }
 
-    await this.pipeline.execute(ctx);
+    await this.pipeline.execute(ctx)
 
-    this.onDispatch?.(ctx);
+    this.onDispatch?.(ctx)
 
     const event = new CustomEvent<typeof payload>(this.eventName, {
       detail: payload,
       bubbles: eventInitDict.bubbles ?? false,
       cancelable: eventInitDict.cancelable,
-    });
+    })
 
-    this.element.dispatchEvent(event);
+    this.element.dispatchEvent(event)
   }
 
   /**
@@ -221,10 +221,10 @@ export class EventController<T extends ZodSchema> {
    */
   refine(
     condition: (payload: EventPayload<T>) => boolean,
-    callback?: (ctx: EventPayloadContext<T>) => void
+    callback?: (ctx: EventPayloadContext<T>) => void,
   ): void {
-    this.condition = condition;
-    this.conditionCallback = callback;
+    this.condition = condition
+    this.conditionCallback = callback
   }
 
   /**
@@ -244,7 +244,7 @@ export class EventController<T extends ZodSchema> {
    * ```
    */
   update(options: Partial<EventControllerOptions<T>>): void {
-    Object.assign(this, options);
+    Object.assign(this, options)
   }
 
   /**
@@ -264,6 +264,6 @@ export class EventController<T extends ZodSchema> {
    * ```
    */
   use(middleware: Middleware<EventPayload<T>>): void {
-    this.pipeline.push(middleware);
+    this.pipeline.push(middleware)
   }
 }

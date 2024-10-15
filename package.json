@@ -33,10 +33,18 @@
       "require": "./dist/index.cjs"
     }
   },
+  "files": [
+    "dist/",
+    "package.json",
+    "CHANGELOG.md",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "build": "npm run clean:build && npm run build:dist && npm run build:types",
     "build:dist": "rollup -c",
     "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "check": "biome check --write ./src",
     "prepublishOnly": "npm run build",
     "clean": "node scripts/rm.mjs",
     "clean:dev": "npm run clean node_modules",
