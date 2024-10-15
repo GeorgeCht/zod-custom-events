@@ -1,0 +1,26 @@
+# Dependencies
+node_modules
+
+# Testing
+coverage
+
+# Turbo
+.turbo
+
+# Build Outputs
+.next/
+out/
+build
+dist
+
+# Rollup
+.rollup
+.rollup.cache
+.rollup.*
+
+# TypeScript Build Info
+tsconfig.tsbuildinfo
+
+# Misc
+.DS_Store
+*.pem

@@ -1,0 +1,50 @@
+{
+  "name": "zod-custom-events",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "build": "npm run clean:build && npm run build:dist && npm run build:types",
+    "build:dist": "rollup -c",
+    "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
+    "prepublishOnly": "npm run build",
+    "clean": "node scripts/rm.mjs",
+    "clean:dev": "npm run clean node_modules",
+    "clean:build": "npm run clean dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "test:types": "tsc --noEmit",
+    "size": "size-limit"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.3",
+    "@rollup/plugin-typescript": "^12.1.0",
+    "@size-limit/preset-small-lib": "^11.1.6",
+    "@types/node": "^22.7.5",
+    "rollup": "^4.24.0",
+    "size-limit": "^11.1.6",
+    "tslib": "^2.7.0",
+    "typescript": "^5.6.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "size-limit": [
+    {
+      "path": "dist/index.js",
+      "limit": "1 kB"
+    }
+  ]
+}
