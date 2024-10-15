@@ -22,7 +22,7 @@ jobs:
         with:
           fetch-depth: 0
           persist-credentials: false
-      - uses: ./.github/actions/prepare
+      - uses: ./.github/workflows/build
 
       - name: Build
         run: pnpm run build
