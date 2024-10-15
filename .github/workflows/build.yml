@@ -1,14 +1,9 @@
-name: Production Build & Release New Version
-
-# on:
-#   pull_request:
-#   workflow_dispatch:
-#   workflow_call:
+name: Production Build
 
 on:
-  push:
-    branches:
-      - release
+  pull_request:
+  workflow_dispatch:
+  workflow_call:
 
 jobs:
   build:
@@ -32,15 +27,3 @@ jobs:
 
       - name: Build Project
         run: npm run build
-
-      - name: Run release script
-        run: npm run release
-
-      - name: Sync versions (package.json -> jsr.json)
-        run: npm run version
-
-      - name: Push changes to release branch
-        run: |
-          git add .
-          git commit -m "chore(release): bump versions"
-          git push origin HEAD:release
