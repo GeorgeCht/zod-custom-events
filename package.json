@@ -23,16 +23,23 @@
     "clean:build": "npm run clean dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:types": "tsc --noEmit",
-    "size": "size-limit"
+    "size": "size-limit",
+    "commit": "git add . && cz"
   },
   "dependencies": {
     "zod": "^3.23.8"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.8.3",
+    "@commitlint/cli": "^19.5.0",
+    "@commitlint/config-conventional": "^19.5.0",
+    "@commitlint/cz-commitlint": "^19.5.0",
     "@rollup/plugin-typescript": "^12.1.0",
     "@size-limit/preset-small-lib": "^11.1.6",
     "@types/node": "^22.7.5",
+    "commitizen": "^4.3.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "inquirer": "^9.3.7",
     "rollup": "^4.24.0",
     "size-limit": "^11.1.6",
     "tslib": "^2.7.0",
@@ -46,5 +53,10 @@
       "path": "dist/index.js",
       "limit": "1 kB"
     }
-  ]
+  ],
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
