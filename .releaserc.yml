@@ -27,7 +27,7 @@ plugins:
           scope: peer-deps
           release: patch
         - type: test
-          release: release-patch
+          release: patch
         - type: build
           scope: release-patch
           release: patch
