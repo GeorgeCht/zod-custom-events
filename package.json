@@ -1,6 +1,6 @@
 {
   "name": "zod-custom-events",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Type safe, framework agnostic, Zod based, custom events extension library.",
   "keywords": [
     "events",
