@@ -18,14 +18,24 @@ jobs:
     outputs:
       new_release_published: ${{ steps.semantic.outputs.new_release_published }}
     steps:
-      - uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          persist-credentials: false
-      - uses: ./.github/workflows/build
+      - name: Configure Git
+        run: |
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name ${GITHUB_ACTOR}
+        shell: bash
 
-      - name: Build
-        run: pnpm run build
+      - uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Project
+        run: npm run build
 
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v3
