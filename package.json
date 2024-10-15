@@ -48,7 +48,6 @@
     "build:dist": "rollup -c",
     "build:types": "tsc -p tsconfig.json --emitDeclarationOnly",
     "check": "biome check --write ./src",
-    "prepublishOnly": "npm run build",
     "clean": "node scripts/rm.mjs",
     "clean:dev": "npm run clean node_modules",
     "clean:build": "npm run clean dist",
