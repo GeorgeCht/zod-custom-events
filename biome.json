@@ -18,7 +18,8 @@
       "complexity": {
         "useArrowFunction": "off",
         "noForEach": "off",
-        "noUselessFragments": "off"
+        "noUselessFragments": "off",
+        "useLiteralKeys": "off"
       },
       "nursery": {
         "useSortedClasses": {
