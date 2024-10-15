@@ -3,7 +3,7 @@ name: Publish on JSR
 on:
   push:
     branches:
-      - main
+      - release
 
 jobs:
   build-and-release:

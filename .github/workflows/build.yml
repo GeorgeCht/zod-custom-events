@@ -1,41 +1,46 @@
-# name: Production Build & Release New Version
+name: Production Build & Release New Version
 
 # on:
 #   pull_request:
 #   workflow_dispatch:
 #   workflow_call:
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Configure Git
-#         run: |
-#           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-#           git config --global user.name ${GITHUB_ACTOR}
-#         shell: bash
+on:
+  push:
+    branches:
+      - release
 
-#       - uses: actions/checkout@v4
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Configure Git
+        run: |
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config --global user.name ${GITHUB_ACTOR}
+        shell: bash
 
-#       - name: Set up Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: "20.x"
+      - uses: actions/checkout@v4
 
-#       - name: Install Dependencies
-#         run: npm ci
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
 
-#       - name: Build Project
-#         run: npm run build
+      - name: Install Dependencies
+        run: npm ci
 
-#       - name: Run release script
-#         run: npm run release
+      - name: Build Project
+        run: npm run build
 
-#       - name: Sync versions (package.json -> jsr.json)
-#         run: npm run version
+      - name: Run release script
+        run: npm run release
 
-#       - name: Push changes to release branch
-#         run: |
-#           git add .
-#           git commit -m "chore(release): bump versions"
-#           git push origin HEAD:release
+      - name: Sync versions (package.json -> jsr.json)
+        run: npm run version
+
+      - name: Push changes to release branch
+        run: |
+          git add .
+          git commit -m "chore(release): bump versions"
+          git push origin HEAD:release
