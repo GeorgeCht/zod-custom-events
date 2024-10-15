@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [1.1.1](https://github.com/georgecht/zod-custom-events/compare/v1.1.0...v1.1.1) (2024-10-15)
+
+
+### 🚚 Chores
+
+* **.vscode:** added basic VS Code settings file for development ([50dffd1](https://github.com/georgecht/zod-custom-events/commit/50dffd177941d73028f77ec50c3011007058c24e))
+
+
+### 📝 Documentation
+
+* **readme:** added README.md ([1a39077](https://github.com/georgecht/zod-custom-events/commit/1a39077fb2245ad9ecddb496fabde4bab0f69726))
+
 ## 1.1.0 (2024-10-15)
 
 
