@@ -54,6 +54,7 @@
     "release": "semantic-release",
     "version": "node scripts/version.mjs",
     "test": "jest",
+    "test:coverage": "npx jest --coverage",
     "test:types": "tsc --noEmit",
     "size": "size-limit",
     "commit": "git add . && cz"
