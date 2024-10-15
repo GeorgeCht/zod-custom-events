@@ -22,6 +22,9 @@
     "url": "git+https://github.com/georgecht/zod-custom-events"
   },
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/georgecht/zod-custom-events/issues"
+  },
   "sideEffects": false,
   "type": "module",
   "main": "./dist/index.cjs",
@@ -53,6 +56,7 @@
     "release:major": "npm run release -- --release-as major",
     "release:minor": "npm run release -- --release-as minor",
     "release:patch": "npm run release -- --release-as patch",
+    "version": "node scripts/version.mjs",
     "test": "echo \"Error: no test specified\" && exit 1",
     "test:types": "tsc --noEmit",
     "size": "size-limit",
