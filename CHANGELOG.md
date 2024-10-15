@@ -8,6 +8,13 @@ All notable changes to this project will be documented in this file. Dates are d
 
 * **.releaserc.yml:** mini fix in .releaserc.yml config ([9283687](https://github.com/georgecht/zod-custom-events/commit/92836873136b3e6862d1523b4379d503ae24c54f))
 
+# [1.1.0](https://github.com/georgecht/zod-custom-events/compare/v1.0.0...v1.1.0) (2024-10-15)
+
+
+### Bug Fixes
+
+* **.releaserc.yml:** mini fix in .releaserc.yml config ([9283687](https://github.com/georgecht/zod-custom-events/commit/92836873136b3e6862d1523b4379d503ae24c54f))
+
 # 1.0.0 (2024-10-15)
 
 
@@ -49,4 +56,3 @@ All notable changes to this project will be documented in this file. See [commit
 ### 🚚 Chores
 
 * **metadata:** added more meta data to package.json ([6fb83a9](https://github.com/georgecht/zod-custom-events/commit/6fb83a9a640513d15e15a696b6411ae6abbf1c6e))
-
