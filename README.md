@@ -14,7 +14,7 @@ Type safe, framework agnostic, Zod based, custom events extension library.
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/georgecht/zod-custom-events/blob/master/LICENSE)
 ![NPM Bundle Size](https://img.shields.io/bundlephobia/min/zod-custom-events)
-<!-- [![NPM Downloads](https://img.shields.io/npm/zod-custom-events.svg)](https://www.npmjs.org/package/zod-custom-events) -->
+[![npm](https://img.shields.io/npm/dm/zod-custom-events.svg)](https://www.npmjs.org/package/zod-custom-events)
 
 </div>
 
@@ -30,17 +30,13 @@ Type safe, framework agnostic, Zod based, custom events extension library.
 ## Table of Contents
 
 * [Installation](#installation)
+  * [Prerequisites](#prerequisites)
+  * [Using NPM](#using-npm)
+  * [Using JSR](#using-jsr)
+  * [Using a CDN](#using-a-cdn)
 * [Usage](#usage)
 * [API Reference](#api-reference)
   * [EventController](#eventcontroller)
-    1. `Constructor`
-    2. `Subscribe`
-    3. `Unsubscribe`
-    4. `Dispatch`
-    5. `Refine`
-    6. `Update`
-    7. `Middleware`
-<!-- * [Examples](#examples) -->
 * [Contributing](#contributing)
 * [License](#license)
 
