@@ -13,7 +13,7 @@ Type safe, framework agnostic, Zod based, custom events extension library.
 
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/georgecht/zod-custom-events/blob/master/LICENSE)
-![NPM Bundle Size](https://img.shields.io/bundlephobia/min/zod-custom-events)
+[![NPM Bundle Size](https://img.shields.io/bundlephobia/min/zod-custom-events)](https://bundlephobia.com/package/zod-custom-events@latest)
 [![npm](https://img.shields.io/npm/dm/zod-custom-events.svg)](https://www.npmjs.org/package/zod-custom-events)
 
 </div>
