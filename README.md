@@ -4,7 +4,7 @@
 
 Type safe, framework agnostic, Zod based, custom events extension library.
 
-[![NPM Version](https://img.shields.io/npm/v/zod-custom-events.svg?style=flat-square)](https://www.npmjs.com/package/@georgecht/zod-custom-events)
+[![NPM Version](https://img.shields.io/npm/v/zod-custom-events.svg?style=flat-square)](https://www.npmjs.com/package/zod-custom-events)
 [![JSR Version](https://jsr.io/badges/@georgecht/zod-custom-events)](https://jsr.io/@georgecht/zod-custom-events)
 [![JSR Score](https://jsr.io/badges/@georgecht/zod-custom-events/score)](https://jsr.io/@georgecht/zod-custom-events)
 [![CI](https://img.shields.io/github/actions/workflow/status/georgecht/zod-custom-events/release.yml?style=flat-square)](https://github.com/georgecht/zod-custom-events/actions/workflows/release.yml)
