@@ -3,7 +3,7 @@ import { createPipeline } from '../src/middleware'
 
 import type { Middleware, Pipeline } from '../src/middleware'
 
-describe('createPipeline', () => {
+describe('Middleware Pipeline', () => {
   const TestSchema = z.object({
     id: z.number(),
     name: z.string(),
