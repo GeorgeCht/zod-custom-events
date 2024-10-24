@@ -55,7 +55,7 @@ export interface EventControllerOptions<T extends ZodSchema> {
  * Supports adding, emitting, and removing the event listener, as well as middleware for event processing.
  */
 export class EventController<T extends ZodSchema> {
-  private element: HTMLElement | Window
+  private element: HTMLElement | Window | typeof globalThis
   private pipeline: Pipeline<EventPayload<T>>
 
   private condition?: (payload: EventPayload<T>) => boolean
