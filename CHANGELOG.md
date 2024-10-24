@@ -1,6 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+# [1.3.0](https://github.com/georgecht/zod-custom-events/compare/v1.2.2...v1.3.0) (2024-10-24)
+
+
+### Features
+
+* **core:** updated element type to also accept `typeof globalThis` ([43d4651](https://github.com/georgecht/zod-custom-events/commit/43d465124ea76e96c715e008aaef8e9bb98b3f09))
+
 ## [1.2.2](https://github.com/georgecht/zod-custom-events/compare/v1.2.1...v1.2.2) (2024-10-23)
 
 ## [1.2.1](https://github.com/georgecht/zod-custom-events/compare/v1.2.0...v1.2.1) (2024-10-21)
