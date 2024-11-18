@@ -1,6 +1,8 @@
 # Changelog
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+## [1.3.2](https://github.com/georgecht/zod-custom-events/compare/v1.3.1...v1.3.2) (2024-11-18)
+
 ## [1.3.1](https://github.com/georgecht/zod-custom-events/compare/v1.3.0...v1.3.1) (2024-10-24)
 
 # [1.3.0](https://github.com/georgecht/zod-custom-events/compare/v1.2.2...v1.3.0) (2024-10-24)
